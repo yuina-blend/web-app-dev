@@ -27,7 +27,7 @@ https://hogehoge.tk/tool/number.html
 
 ↓
 
-OpenCVにまんまその機能がるから、バックがPython(OpenCV)で動けばできそう
+OpenCVにまんまその機能がるから、バックがPython(OpenCV)で動けばできそう(Flask+OpenCV？)
 
 
 現状3の画像処理がテーマとしていいんじゃないかという話になってる
