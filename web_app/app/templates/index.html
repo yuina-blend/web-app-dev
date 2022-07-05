@@ -15,28 +15,35 @@
 
         <p>フォントを選択</p>
         <select size="1" name="font">
-            <option value="mincho">明朝体</option>
-            <option value="gothic">ゴシック体</option>
-            <option value="pop">ポップ体</option>
-            <option value="kyokasho">教科書体</option>
+            <option value="simplex">SIMPLEX</option>
+            <option value="plain">PLAIN</option>
+            <option value="duplex">DUPLEX</option>
+            <option value="complex">COMPLEX</option>
+            <option value="triplex">TRIPLEX</option>
+            <option value="complex_small">COMPLEX_SMALL</option>
+            <option value="script_simplex">SCRIPT_SIMPLEX</option>
+            <option value="script_complex">SCRIPT_COMPLEX</option>
+            <option value="italic">ITALIC</option>
         </select>
 
-        <!--#ffffffって感じのカラーコードが行く-->
         <p>色を選択</p>
         <input type="color" name="color">
 
-        <p>文字サイズを入力(1-10)</p>
-        <input type="number" name="charsize" min="1" max="10">
+        <p>文字サイズを入力</p>
+        <input type="number" name="textsize">
 
-        <p>画像サイズを入力(270-1080)</p>
-        <input type="number" name="imgsize" min="270" max="1080">
+        <p>画像サイズを入力</p>
+        <label for="height">縦</label>
+        <input type="number" name="height" id="height">
+        <label for="width">横</label>
+        <input type="number" name="width" id="width">
 
         <p></p>
         <input type="submit" value="生成">
         <p></p>
     </form>
 
-    <img src="/static/images/hogehoge.png" alt="生成された文字画像">
+    <img src="/static/textimg.jpg" alt="生成された文字画像">
 </body>
 
 </html>
