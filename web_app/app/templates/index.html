@@ -2,10 +2,41 @@
 <html>
 
 <head>
+    <title>文字画像生成くん(仮)</title>
 </head>
 
 <body>
-    <h1>Webアプリ開発</h1>
+    <h1>文字画像生成くん</h1>
+    <h2>Webアプリ開発</h2>
+
+    <form method="post" action="/index">
+        <p>画像にしたい文字を入力</p>
+        <input type="text" name="text" placeholder="文字を入力">
+
+        <p>フォントを選択</p>
+        <select size="1" name="font">
+            <option value="mincho">明朝体</option>
+            <option value="gothic">ゴシック体</option>
+            <option value="pop">ポップ体</option>
+            <option value="kyokasho">教科書体</option>
+        </select>
+
+        <!--#ffffffって感じのカラーコードが行く-->
+        <p>色を選択</p>
+        <input type="color" name="color">
+
+        <p>文字サイズを入力(1-10)</p>
+        <input type="number" name="charsize" min="1" max="10">
+
+        <p>画像サイズを入力(270-1080)</p>
+        <input type="number" name="imgsize" min="270" max="1080">
+
+        <p></p>
+        <input type="submit" value="生成">
+        <p></p>
+    </form>
+
+    <img src="/static/images/hogehoge.png" alt="生成された文字画像">
 </body>
 
 </html>
