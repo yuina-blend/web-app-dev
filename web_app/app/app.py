@@ -8,6 +8,7 @@ app=Flask(__name__)
 
 #　最初の表示
 @app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 
@@ -22,8 +23,9 @@ def post():
     height=request.form.get('height')
     width=request.form.get('width')
 
+    #OpenCVフォントの辞書
     cv2fonts = {
-        'sinplex':cv2.FONT_HERSHEY_SIMPLEX,
+        'simplex':cv2.FONT_HERSHEY_SIMPLEX,
         'plain':cv2.FONT_HERSHEY_PLAIN,
         'duplex':cv2.FONT_HERSHEY_DUPLEX,
         'complex':cv2.FONT_HERSHEY_COMPLEX,
@@ -33,9 +35,11 @@ def post():
         'script_complex':cv2.FONT_HERSHEY_SCRIPT_COMPLEX,
         'italic':cv2.FONT_ITALIC
     }
+    # カラーコードをRGB値タプルに変換
     rgb=(int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16))
+    # 画像生成
     textimg = GenerateTextImage()
-    textimg.generate(height=int(height), width=int(width), backcolor=(255, 255, 255), text=text, textcolor=rgb, font=cv2fonts.get(font), textsize=float(textsize))
+    textimg.generate(int(height), int(width), (255, 255, 255), text, rgb, cv2fonts.get(font), float(textsize))
 
     return render_template('index.html')
 
