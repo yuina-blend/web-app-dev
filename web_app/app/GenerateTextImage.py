@@ -1,6 +1,6 @@
 class GenerateTextImage:
 
-    def generate(self, height : int, width : int, backcolor : tuple, text : str, textcolor : tuple, font : int, textsize : float):
+    def generate(self, height : int, width : int, backcolor : tuple, text : str, textcolor : tuple, font : int, textsize : int):
         import cv2
         import numpy as np
         img = np.zeros((height, width, 3), np.uint8)
