@@ -1,17 +1,23 @@
 # モジュールとファイルのインポート
 from flask import Flask,render_template,request
 import cv2
+
+# run.pyで連携するとき
+# from app.GenerateTextImage import GenerateTextImage
+
+# app.pyから実行するとき
 from GenerateTextImage import GenerateTextImage
 
 app=Flask(__name__)
 
 #　最初の表示
 @app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 
 #　変更後の表示
-@app.route('/index',methods=["post"])
+@app.route('/index',methods=['post'])
 def post():
 
     # 入力したデータを取得
@@ -55,8 +61,10 @@ def post():
 
     # HTMLを返す
     return render_template(
-        'index.html',text=text,font=font,color=color,
-        textsize=textsize,height=height,width=width)
+        'index.html',
+        text=text,font=font,color=color,textsize=textsize,height=height,width=width
+        )
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.debug=True
+    app.run(host='localhost')
