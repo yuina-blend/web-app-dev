@@ -1,17 +1,23 @@
 # モジュールとファイルのインポート
 from flask import Flask,render_template,request
 import cv2
-import GenerateTextImage
+
+# run.pyで連携するとき
+# from app.GenerateTextImage import GenerateTextImage
+
+# app.pyから実行するとき
+from GenerateTextImage import GenerateTextImage
 
 app=Flask(__name__)
 
 #　最初の表示
 @app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 
 #　変更後の表示
-@app.route('/index',methods=["post"])
+@app.route('/index',methods=['post'])
 def post():
 
     # 入力したデータを取得
@@ -23,7 +29,7 @@ def post():
     width=request.form['width']
 
     # インスタンス生成
-    generate=GenerateTextImage.GenerateTextImage()
+    generate=GenerateTextImage()
 
     # 背景色を白にする（白はRGB=(255,255,255)）
     backcolor=(255,255,255)
@@ -47,7 +53,7 @@ def post():
             font=fonttype[i]
     
     # テキストの色を指定 
-    color=(int(color[1:3],16),int(color[3:5],16),int(color[5:7],16))
+    color=(int(color[5:7],16),int(color[3:5],16),int(color[1:3],16))
 
     # 画像を生成
     generate.generate(
@@ -55,8 +61,10 @@ def post():
 
     # HTMLを返す
     return render_template(
-        'index.html',text=text,font=font,color=color,
-        textsize=textsize,height=height,width=width)
+        'index.html',
+        text=text,font=font,color=color,textsize=textsize,height=height,width=width
+        )
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.debug=True
+    app.run(host='localhost')
