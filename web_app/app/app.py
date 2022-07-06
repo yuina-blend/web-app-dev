@@ -1,7 +1,7 @@
 # モジュールとファイルのインポート
 from flask import Flask,render_template,request
 import cv2
-import GenerateTextImage
+from GenerateTextImage import GenerateTextImage
 
 app=Flask(__name__)
 
@@ -23,7 +23,7 @@ def post():
     width=request.form['width']
 
     # インスタンス生成
-    generate=GenerateTextImage.GenerateTextImage()
+    generate=GenerateTextImage()
 
     # 背景色を白にする（白はRGB=(255,255,255)）
     backcolor=(255,255,255)
@@ -47,7 +47,7 @@ def post():
             font=fonttype[i]
     
     # テキストの色を指定 
-    color=(int(color[1:3],16),int(color[3:5],16),int(color[5:7],16))
+    color=(int(color[5:7],16),int(color[3:5],16),int(color[1:3],16))
 
     # 画像を生成
     generate.generate(
