@@ -10,8 +10,6 @@ class GenerateTextImage:
 
         cv2.putText(img, text, (int(img.shape[0]/3), int(img.shape[1]/2)), font, textsize, textcolor, 4, cv2.LINE_4)
 
-        cv2.imwrite('static/textimg.jpg', img)
-
         result, dst_data = cv2.imencode('.jpg', img)
         dst_base64 = base64.b64encode(dst_data).decode().replace("'", "")
 
