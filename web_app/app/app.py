@@ -1,12 +1,13 @@
 # モジュールとファイルのインポート
 from flask import Flask,render_template,request
 import cv2
+import base64
 
 # run.pyで連携するとき
-# from app.GenerateTextImage import GenerateTextImage
+from app.GenerateTextImage import GenerateTextImage
 
 # app.pyから実行するとき
-from GenerateTextImage import GenerateTextImage
+#from .GenerateTextImage import GenerateTextImage
 
 app=Flask(__name__)
 
@@ -56,14 +57,11 @@ def post():
     color=(int(color[5:7],16),int(color[3:5],16),int(color[1:3],16))
 
     # 画像を生成
-    generate.generate(
+    img_base64 = generate.generate(
         int(height),int(width),backcolor,text,color,font,int(textsize))
 
     # HTMLを返す
-    return render_template(
-        'index.html',
-        text=text,font=font,color=color,textsize=textsize,height=height,width=width
-        )
+    return render_template('index.html', img_base64=img_base64)
 
 if __name__=='__main__':
     app.debug=True
